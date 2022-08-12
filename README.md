@@ -1,2 +1,3 @@
-# repositori ini saya buat untuk mencatat cara menggunakan Database
+---
+# this repository I create to take note of how to use Database
 ---
