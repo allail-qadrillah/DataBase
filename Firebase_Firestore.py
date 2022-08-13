@@ -2,7 +2,6 @@
 SET UP THE FIRESTORE
 open project settings --> Services accounts -- Copy `Admin SDK configuration snippet` and `Generate New Private Key`
 """
-from heapq import merge
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
