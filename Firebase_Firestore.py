@@ -14,60 +14,70 @@ db = firestore.client()
 
 """         CREATE  DATA        """
 # Create database with auto id
-def add_data_auto_id(child, data):
-    db.collection(child).add(data)
+def add_data_auto_id(collection, data):
+    db.collection(collection).add(data)
 
 # Create databse with known id
-def add_data_known_id(child,id,  data):
-    db.collection(child).document(id).set(data)
+def add_data_known_id(collection, id,  data):
+    db.collection(collection).document(id).set(data)
 
-# Merging data 
-def merging_data_known_id(child,id,  data):
-    db.collection(child).document(id).set(data, merge=True)
+# Merging data
+def merging_data_known_id(collection, id,  data):
+    db.collection(collection).document(id).set(data, merge=True)
 
-# Create new collection in child collection
-def add_collection_into_child(child,id, child_2, data):
-    db.collection(child).document(id).collection(child_2).add(data)
+# Create new collection in collection collection
+def add_collection_into_collection(collection, id, collection_2, data):
+    db.collection(collection).document(id).collection(collection_2).add(data)
+
 
 """         READ DATA       """
 # Read data with kown id
-def get_data(child, id):
-    data = db.collection(child).document(id).get()
+def get_data(collection, id):
+    data = db.collection(collection).document(id).get()
     if data.exists:
         print(data.to_dict())
 
 # Read all data
-def get_all_data(child):
-    data = db.collection(child).get()
+def get_all_data(collection):
+    data = db.collection(collection).get()
 
     for each in data:
         print(each.to_dict())
 
 # Read data with query
-def get_all_data_query(child):
+def get_all_data_query(collection):
     data = db.collection('persons').where("age", ">=", 34).get()
-  
+
     for each in data:
         print(each.to_dict())
 
+
 """         UPDATE  DATA        """
 # update with known key
-def update_data_key(child, key, data):
-    db.collection(child).document(key).update(data)
-"""
+def update_data_key(collection, key, data):
+    db.collection(collection).document(key).update(data)
+
 # update Increament
 update_data_key('persons', 'nama_1', {'age': firestore.Increment(20)})
 # update array
 update_data_key('persons', 'nama_1', {'languages': firestore.ArrayUnion(['java'])})
 # remove array
 update_data_key('persons', 'nama_1', {'languages': firestore.ArrayRemove(['java'])})
-"""
+
 
 """         DELETE  DATA        """
 # delete with known document
-def delete_document_key(child, key):
-    db.collection(child).document(key).delete()
+def delete_document_key(collection, key):
+    db.collection(collection).document(key).delete()
 
 # delete with known field
-def delete_field_key(child, key, data):
-    db.collection(child).document(key).update({data : firestore.DELETE_FIELD})
+def delete_field_key(collection, key, data):
+    db.collection(collection).document(key).update({data: firestore.DELETE_FIELD})
+    
+# delete data with look id in document 
+def delete_data_with_id_document():
+    # check id
+    data = db.collection("data_employees").where('id', '==', id).get()
+    # delete document id
+    db.collection(collection).document(data[0].id).delete()
+    
