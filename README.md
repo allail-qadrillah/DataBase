@@ -1,3 +1,4 @@
-# this repository I create to take note of how to use Database
+# This repository I create to take note of how to use Database
 ---
-Firebase module documentation https://github.com/nhorvath/Pyrebase4
+- Firestore im using [firebase_admin](https://github.com/firebase/firebase-admin-python)
+- [pyrebase]((https://github.com/nhorvath/Pyrebase4)) module documentation 
