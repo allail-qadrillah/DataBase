@@ -1,5 +1,5 @@
 import pyrebase
-
+# using firebase admin SDK https://geekscoders.com/courses/python-firebase/lessons/python-firebase-admin-sdk-with-realtime-database/
 firebase_config = {"YOUR FIREBASE CONFIG"} # get firebaseconfig == settungs -> project settings -- scroldown -- SDK setup and configuration
 
 # Initialize app
