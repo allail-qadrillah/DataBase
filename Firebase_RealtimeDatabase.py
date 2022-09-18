@@ -1,5 +1,62 @@
+"""
+USING FIREBASE ADMIN SDK
+https://geekscoders.com/courses/python-firebase/lessons/python-firebase-admin-sdk-with-realtime-database/
+"""
+from firebase_admin import credentials
+from firebase_admin import db
+ 
+cred = credentials.Certificate('firebase-sdk.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://firepro-c07de.firebaseio.com/'
+})
+
+ref = db.reference('/')
+ref.set({
+    'Employee':
+        {
+            'emp1': {
+                'name':'Parwiz',
+                'lname':'Forogh',
+                'age':24
+            },
+            'emp2': {
+                'name':'John',
+                'lname':'Doe',
+                'age':20
+             }
+        }
+})
+#updating data
+ref = db.reference('Employee')
+emp_ref = ref.child('emp1')
+emp_ref.update({
+    'name':'Python'
+})
+#multiple update
+ref = db.reference('Employee')
+ref.update({
+    'emp1/lname':'updated lname1',
+    'emp2/lname':'updated lname2'
+})
+#adding value using push
+ref = db.reference('Employee2')
+emp_ref = ref.push({
+    'name':'Bob',
+    'lname':'Logan',
+    'email':'bob@gmail.com',
+    'age':24
+ 
+ 
+})
+print(emp_ref.key)
+ 
+ref = db.reference('Employee2')
+print(ref.get())
+
+"""
+USING PYREBASE
+"""
 import pyrebase
-# using firebase admin SDK https://geekscoders.com/courses/python-firebase/lessons/python-firebase-admin-sdk-with-realtime-database/
 firebase_config = {"YOUR FIREBASE CONFIG"} # get firebaseconfig == settungs -> project settings -- scroldown -- SDK setup and configuration
 
 # Initialize app
