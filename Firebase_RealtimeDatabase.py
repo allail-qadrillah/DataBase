@@ -55,6 +55,7 @@ print(ref.get())
 
 """
 USING PYREBASE
+https://github.com/thisbejim/Pyrebase#database
 """
 import pyrebase
 firebase_config = {"YOUR FIREBASE CONFIG"} # get firebaseconfig == settungs -> project settings -- scroldown -- SDK setup and configuration
